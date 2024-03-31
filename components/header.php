@@ -8,8 +8,10 @@ if (!isset($_SESSION)) {
     <?php
     echo '<a href="/video/index.php">ホーム</a>';
     echo '<a href="/video/upload">投稿</a>';
+    include $_SERVER['DOCUMENT_ROOT'] . '/video/components/sanitizer.php';
     if (isset($_SESSION['username'])) {
         $userid = $_SESSION['username'];
+        $userid = $s($userid);
         echo '<p>ようこそ' . $userid . 'さん</p>';
         echo '<a href="/video/logout">ログアウト</a>';
     } else {

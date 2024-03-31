@@ -38,10 +38,15 @@
             $stmt->execute();
             $videos = $stmt->fetchAll();
 
+            include 'components/sanitizer.php';
+
+            $title = $s($video['title']);
+            $description = $s($video['description']);
+
             foreach ($videos as $video) {
                 echo '<a href="watch/index.php?id=' . $video['id'] . '">';
-                echo '<h3>' . $video['title'] . '</h3>';
-                echo '<p>' . $video['description'] . '</p>';
+                echo '<h3>' . $title . '</h3>';
+                echo '<p>' . $description . '</p>';
                 // サムネイル
                 echo '<img style="width:108px; height:72px;object-fit: contain;" src="data:image/png;base64,' . base64_encode($video['thumbnail']) . '">';
                 echo '</a>';

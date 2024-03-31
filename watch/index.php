@@ -23,8 +23,12 @@
             return;
         }
         
-        echo '<h1>' . $video['title'] . '</h1>';
-        echo '<p>' . $video['description'] . '</p>';
+        include '../components/sanitizer.php';
+
+        $title = $s($video['title']);
+        $description = $s($video['description']);
+        echo '<h1>' . $title . '</h1>';
+        echo '<p>' . $description . '</p>';
 
         $width = 1080;
         $height = 720;

@@ -40,10 +40,11 @@
 
             include 'components/sanitizer.php';
 
-            $title = $s($video['title']);
-            $description = $s($video['description']);
+            
 
             foreach ($videos as $video) {
+                $title = $s($video['title']);
+                $description = $s($video['description']);
                 echo '<a href="watch/index.php?id=' . $video['id'] . '">';
                 echo '<h3>' . $title . '</h3>';
                 echo '<p>' . $description . '</p>';
